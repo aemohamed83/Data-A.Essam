@@ -1,0 +1,16 @@
+body {  
+    font-family: 'Arial', sans-serif; /* Default font */  
+    margin: 0;  
+    padding: 0;  
+    background-color: #f0f0f0; /* Light gray background */  
+}  
+
+/* A basic class for forms */  
+.form-container {  
+    margin: auto;  
+    padding: 20px;  
+    background-color: white;  
+    max-width: 400px; /* Form max width */  
+    border-radius: 5px; /* Rounded corners */  
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */  
+}

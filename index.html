@@ -22,7 +22,7 @@
 
         h1 i {
             color: #31CC00;
-            font-size: 1em; /* Adjust icon size */
+            font-size: 1.5em; /* Adjust icon size */
         }
 
         body {
@@ -74,6 +74,11 @@
             align-items: center; /* Align text and icon */
             gap: 10px; /* Space between text and icon */
             animation: bounce 5s ease infinite;
+        }
+
+        #signature i {
+            color: #00B0F0;
+            font-size: 1.5em; /* Adjust icon size */
         }
 
         button {
@@ -177,8 +182,8 @@
                     const detailsDiv = document.getElementById('employeeDetails');
                     if (employee) {
                         detailsDiv.innerHTML = `
-                            <p class="employee-name">Name: <span style="color: black;">${employee.Name}</span></p>
-                            <p class="employee-email">Email: <span style="color: black;">${employee['Email Address']}</span></p>
+                            <p class="employee-name"><i class="fa-solid fa-user"></i> Name: <span style="color: black;">${employee.Name}</span></p>
+                            <p class="employee-email"><i class="fa-solid fa-envelope-circle-check"></i> Email: <span style="color: black;">${employee['Email Address']}</span></p>
                         `;
                         detailsDiv.classList.add('show');
                     } else {

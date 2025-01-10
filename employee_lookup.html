@@ -1,0 +1,51 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Employee Lookup</title>  
+</head>  
+<body>  
+    <form id="lookupForm">  
+        <input type="text" id="employeeId" placeholder="Enter Employee ID">  
+        <button type="submit">Get Details</button>  
+    </form>  
+    <div id="employeeDetails"></div>  
+
+    <script>  
+        document.getElementById('lookupForm').addEventListener('submit', function(event) {  
+            event.preventDefault(); // Prevent default form submission  
+
+            const employeeId = document.getElementById('employeeId').value.trim(); // Get the employee ID  
+            console.log('Requested Employee ID:', employeeId); // Log the ID for debugging  
+
+            fetch('employees.json')  
+                .then(response => {  
+                    if (!response.ok) {  
+                        throw new Error('Network response was not ok: ' + response.statusText);  
+                    }  
+                    return response.json(); // Parse the JSON data  
+                })  
+                .then(data => {  
+                    console.log('Fetched Data:', data); // Log the fetched data  
+
+                    // Attempt to find the employee using the Employee ID key  
+                    // Convert employeeId to a number if Employee IDs in JSON are numbers  
+                    const employee = data.find(emp => emp['Employee ID'] === Number(employeeId));   
+                    const detailsDiv = document.getElementById('employeeDetails'); // Get the details div  
+
+                    if (employee) {  
+                        console.log('Found Employee:', employee); // Log the found employee  
+                        detailsDiv.innerHTML = `Name: ${employee.Name}, Email: ${employee['Email Address']}`; // Display employee details  
+                    } else {  
+                        console.log(`Employee ID ${employeeId} not found`); // Log if not found  
+                        detailsDiv.innerHTML = 'Employee ID not found'; // Notify user  
+                    }  
+                })  
+                .catch(error => {  
+                    console.error('There has been a problem with your fetch operation:', error);  
+                });  
+        });  
+    </script>  
+</body>  
+</html>
